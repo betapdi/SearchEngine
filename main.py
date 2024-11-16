@@ -33,7 +33,7 @@ BLACK = (0, 0, 0)
 GRAY = (200, 200, 200) 
 
 # Set up input box
-input_box = pygame.Rect(50, 50, 140, 32) 
+input_box = pygame.Rect(220, 100, 140, 32) 
 color_inactive = GRAY 
 color_active = BLACK 
 color = color_inactive 
@@ -42,11 +42,11 @@ text = ''
 search_results = []
 
 #Check box
-checkbox_word_rect = pygame.Rect(400, 50, 20, 20)
+checkbox_word_rect = pygame.Rect(500, 80, 20, 20)
 checkbox_word_color = BLACK 
 checkbox_word_checked = True
 
-checkbox_phrase_rect = pygame.Rect(400, 100, 20, 20)
+checkbox_phrase_rect = pygame.Rect(500, 130, 20, 20)
 checkbox_phrase_color = BLACK 
 checkbox_phrase_checked = False
 
@@ -109,11 +109,24 @@ while running:
     pygame.draw.rect(screen, BLACK, checkbox_phrase_rect, 2) 
     if checkbox_phrase_checked: 
         pygame.draw.rect(screen, BLACK, checkbox_phrase_rect.inflate(-4, -4))
+        
+    title = "Searching..."
+    title_checkbox1 = "Word"
+    title_checkbox2 = "Phrase"
+    
+    title_surface = FONT.render(title, True, BLACK)
+    screen.blit(title_surface, (250, 70))
+    
+    title_checkbox1_surface = FONT.render(title_checkbox1, True, BLACK)
+    screen.blit(title_checkbox1_surface, (550, 75))
+    
+    title_checkbox2_surface = FONT.render(title_checkbox2, True, BLACK)
+    screen.blit(title_checkbox2_surface, (550, 125))
     
     # Draw search results table 
     for i, result in enumerate(search_results): 
         result_surface = FONT.render(result, True, BLACK) 
-        screen.blit(result_surface, (50, 100 + i * 40))
+        screen.blit(result_surface, (50, 200 + i * 40))
     
     pygame.display.flip() 
 pygame.quit() 
